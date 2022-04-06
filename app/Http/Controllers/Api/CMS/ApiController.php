@@ -28,7 +28,6 @@ class ApiController extends Controller
         $blogs->each(function (&$item) {
            $item = $this->rollBody($item);
         });
-
         $last = Blog::orderBy('id','asc')->first();
         $data = [
             'searchOptions' => $search_options,

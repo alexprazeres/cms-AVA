@@ -21,7 +21,16 @@ use Illuminate\Support\Facades\Route;
 | Admin Routes
 |--------------------------------------------------------------------------
 */
-
+Route::get('/linkstorage', function () {
+    echo "criando";
+    Artisan::call('storage:link');
+    echo "clear";
+});
+Route::get('/migration', function () {
+    echo "Rodando migrations";
+    Artisan::call('migrate');
+    echo "Sucesso!";
+});
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Route::group([
