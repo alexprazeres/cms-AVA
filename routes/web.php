@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/migration', function () {
+    echo "Rodando migrations";
+    Artisan::call('migrate');
+    echo "Sucesso!";
+});
 Auth::routes([
     'register'  => config('auth.user_register'),
     'verify'    => config('auth.user_verification')

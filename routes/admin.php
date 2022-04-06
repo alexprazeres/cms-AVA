@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CMS\BlogController;
 use App\Http\Controllers\Admin\CMS\CategoriesController;
+use App\Http\Controllers\Admin\CMS\DepoimentosController;
 use App\Http\Controllers\Admin\CMS\FuncionariosController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,6 +45,7 @@ Route::group([
     Route::resource('blogs', BlogController::class);
     Route::resource('categories', CategoriesController::class);
     Route::resource('funcionarios', FuncionariosController::class);
+    Route::resource('depoimentos', DepoimentosController::class);
 });
 
 Route::group([

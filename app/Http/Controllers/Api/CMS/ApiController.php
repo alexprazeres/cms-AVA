@@ -9,6 +9,7 @@ use App\Interfaces\AppInterface;
 use App\Models\CMS\Blog;
 use App\Models\CMS\Category;
 use App\Models\CMS\Funcionario;
+use App\Models\CMS\Testimonial;
 use App\Models\CRM\Contact;
 use App\Models\User;
 use Carbon\Carbon;
@@ -104,6 +105,17 @@ class ApiController extends Controller
             $funcionario['role'] = $funcionario['title'];
             $funcionario['image'] = sprintf("%s%s",config("app.asset_url"), Storage::url($funcionario['image']));
             $funcionario['bio']   = $funcionario['description'];
+        }
+
+        return new JsonResponse($data);
+    }
+
+    public function depoimentos(Request $request)
+    {
+        $data = Testimonial::orderBy('priority','DESC')->orderBy('id','DESC')->get();
+        foreach($data as &$funcionario){
+
+            unset($funcionario['id']);
         }
 
         return new JsonResponse($data);

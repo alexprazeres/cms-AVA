@@ -31,3 +31,4 @@ Route::get('/blogs/{id}', [ApiController::class, 'show']);
 Route::get('/blogs-recents', [ApiController::class, 'recentBlogs']);
 Route::post('/contato', [ApiController::class, 'contato']);
 Route::get('/funcionarios', [ApiController::class, 'funcionarios']);
+Route::get('/depoimentos', [ApiController::class, 'depoimentos']);
