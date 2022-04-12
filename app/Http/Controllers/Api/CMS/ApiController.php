@@ -16,10 +16,8 @@ use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
 class ApiController extends Controller
 {
-
     public function index(BlogIndexRequest $request)
     {
         $search_options = $request->validated();
@@ -61,6 +59,8 @@ class ApiController extends Controller
 
     public function rollBody(Blog $blog)
     {
+
+        \Carbon\Carbon::setLocale('pt_BR');
         $category = Category::find($blog->category_id);
         $user     = User::find($blog->user_id);
         $blog['category'] = [
@@ -75,7 +75,7 @@ class ApiController extends Controller
         $blog["readingLength"] = "3 min";
         $blog['preview'] = $blog['description'];
         $blog['imageUrl'] = sprintf("%s%s",config("app.asset_url"), Storage::url($blog['image_preview']));
-        $blog['date']       =   Carbon::parse($blog->created_at)->format('d M, Y');
+        $blog['date']       =   Carbon::parse($blog->created_at)->locale('pt-BR')->translatedFormat('d M, Y');
         $blog['datetime']       = $blog['created_at'];
 
         return $blog;
